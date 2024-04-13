@@ -19,6 +19,27 @@ const { title } = Astro.props;
   <body>
     <slot />
   </body>
+  <!-- Inicio Porcion Condicional -->
+  <script>
+    if (import.meta.url.includes(".tienda")) {
+      window.embeddedChatbotConfig = {
+        chatbotId: "pUKMgD8D3xii2SV6KwxD9",
+        domain: "www.chatbase.co",
+      };
+      import("https://www.chatbase.co/embed.min.js")
+        .then((module) => {
+          module.default(
+            "pUKMgD8D3xii2SV6KwxD9",
+            "www.chatbase.co",
+            { defer: true }
+          );
+        })
+        .catch((error) => console.error(error));
+    }
+  </script>
+
+  <!-- Fin Porcion Condicional -->
+
 </html>
 <style is:global>
   @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap");
@@ -62,7 +83,7 @@ const { title } = Astro.props;
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: #202A36; /* Color del botón deslizante */
+    background-color: #202a36; /* Color del botón deslizante */
     border-radius: 5px; /* Redondeo del botón deslizante */
   }
 
