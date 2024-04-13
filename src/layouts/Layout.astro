@@ -4,12 +4,6 @@ interface Props {
 }
 
 const { title } = Astro.props;
-
-// const validateLocation = () => {
-//   const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-//   return canonicalURL;
-// }
-
 ---
 
 <!doctype html>
@@ -25,11 +19,16 @@ const { title } = Astro.props;
   <body>
     <slot />
   </body>
-  <h1>The current URL is: {Astro.request.url}</h1>
-  <h1>The current URL pathname is: {Astro.url.pathname}</h1>
-  <h1>The current URL origin is: {Astro.url.origin}</h1>
-  <!-- <h1>{Astro.url}</h1> -->
-  <!-- <script src="//code.tidio.co/ou6y5nelxl8k6ca2fk9udhhcrlzlpzxo.js" async></script> -->
+  <script>
+    // Verificar si la URL contiene la palabra "tienda"
+    if (window.location.href.includes('tienda')) {
+      // Cargar el script
+      var script = document.createElement('script');
+      script.src = '//code.tidio.co/ou6y5nelxl8k6ca2fk9udhhcrlzlpzxo.js';
+      script.async = true;
+      document.body.appendChild(script);
+    }
+  </script>
 </html>
 <style is:global>
   @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap");
