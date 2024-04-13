@@ -5,10 +5,10 @@ interface Props {
 
 const { title } = Astro.props;
 
-// const validateLocation = () => {
-//   console.log(Astro.url.hostname)
-//   return true;
-// }
+const validateLocation = () => {
+  const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+  return canonicalURL;
+}
 
 ---
 
@@ -25,7 +25,10 @@ const { title } = Astro.props;
   <body>
     <slot />
   </body>
-  <h1>{Astro.url.hostname}</h1>
+  <code>
+    {validateLocation()}
+  </code>
+  <!-- <h1>{Astro.url}</h1> -->
   <!-- <script src="//code.tidio.co/ou6y5nelxl8k6ca2fk9udhhcrlzlpzxo.js" async></script> -->
 </html>
 <style is:global>
